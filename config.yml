@@ -1,0 +1,34 @@
+action1:
+  type: "app"
+  name: "Notepad++"
+  path: 'C:\\Programy\\Notepad++\\notepad++.exe'
+
+action2:
+  type: "sleep"
+  value: 1
+
+action3:
+  type: "keystroke"
+  flow: ""
+  sequence:
+    - win
+    - win
+
+action4:
+  type: "app"
+  name: "Chrome"
+  path: 'C:\\"Program Files"\\Google\\Chrome\\Application\\chrome.exe "http://192.168.1.18:8829/login"'
+  authorization:
+    user: "pezet"
+    pass: "MedialkiWirtualki123"
+    mode: "form"
+
+action5:
+  type: "sleep"
+  value: 1
+
+action6:
+  type: "keystroke"
+  flow: ""
+  sequence:
+    - "Dupa biskupa"

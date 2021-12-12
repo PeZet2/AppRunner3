@@ -1,0 +1,6 @@
+yaml~=0.2.5
+argparse
+webbrowser
+pyyaml~=6.0
+selenium~=3.141.0
+pynput~=1.7.5
