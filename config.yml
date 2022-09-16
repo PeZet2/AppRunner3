@@ -1,28 +1,16 @@
-# action1:
-#   type: "app"
-#   name: "Notepad++"
-#   path: 'C:\Programy\Notepad++\notepad++.exe'
-
-# action2:
-#   type: "sleep"
-#   value: 1
-
-# action3:
-#   type: "keystroke"
-#   flow: ""
-#   sequence:
-#     - ["ctrl", "A"]
-
-action4:
+action1:
   type: "app"
-  name: "Chrome - PZMedia"
-  path: 'C:\"Program Files"\Google\Chrome\Application\chrome.exe "http://192.168.1.18:8829"'
+  name: "Notepad++"
+  path: 'C:\Programy\Notepad++\notepad++.exe'
 
-action5:
+action2:
   type: "sleep"
-  value: 5
+  value: 1
 
-action6:
+action3:
   type: "keystroke"
   sequence:
-    - "Dupa biskupa"
+    - type: "series"
+      value: ["/", "tab", "/"]
+    - type: "parallel"
+      value: ["ctrl", "s"]

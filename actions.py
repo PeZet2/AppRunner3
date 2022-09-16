@@ -1,18 +1,12 @@
 
+from msilib import sequence
 import os
 import time
-from abc import abstractmethod
-from pynput.keyboard import Key, Controller
+from pynput.keyboard import Controller
+from signs import sign_dict
 
 
 class ActionBuilder():
-
-    ACTION_RUN_APP = 1
-    ACTION_SLEEP = 2
-    ACTION_KEYSTROKE = 3
-
-    # def __init__(self, action: dict):
-    #     ActionBuilder.build_action(action)
 
     @staticmethod
     def build_action(action: dict):
@@ -30,7 +24,7 @@ class Action:
         self.name = name
 
     def run_action(self):
-        print(f"Running action: {self.name}...")
+        pass
 
 
 class AppAction(Action):
@@ -52,7 +46,6 @@ class SleepAction(Action):
     
     def run_action(self):
         super().run_action()
-        print(f"Waiting for {self.value} seconds...")
         time.sleep(self.value)
 
 
@@ -60,8 +53,38 @@ class KeystrokeAction(Action):
 
     def __init__(self, name, sequence: list):
         super().__init__(name)     
-        self.sequence = sequence    
+        self.sequence = sequence
+        self.keyboard = Controller()    
+
+    def check_sign(self, value: str) -> str:
+        return sign_dict.get(value, value)
+
+    def press_in_sequence(self, series: list):
+        for element in series:
+            self.write_element(element)
+
+    def press_in_parallel(self, series: list):
+        print(series[0])
+        if len(series) > 1:
+            with self.keyboard.pressed(sign_dict.get(series[0])):
+                self.press_in_parallel(series[1:])
+        else:
+            self.keyboard.press(sign_dict.get(series[0], series[0]))
+            self.keyboard.release(sign_dict.get(series[0], series[0]))
+
+    def write_element(self, element: str):
+        if element in sign_dict:
+            self.keyboard.press(sign_dict.get(element))
+            self.keyboard.release(sign_dict.get(element))
+        else:
+            self.keyboard.type(element)
 
     def run_action(self):
         super().run_action()
-        print(f"Pressing given key sequence [{','.join(self.sequence)}]...")
+        for seq in self.sequence:
+            _type = seq.get('type')
+            _value = seq.get('value')
+            if _type == "series":
+                self.press_in_sequence(_value)
+            elif _type == "parallel":
+                self.press_in_parallel(_value)
