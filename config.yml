@@ -1,34 +1,28 @@
-action1:
-  type: "app"
-  name: "Notepad++"
-  path: 'C:\\Programy\\Notepad++\\notepad++.exe'
+# action1:
+#   type: "app"
+#   name: "Notepad++"
+#   path: 'C:\Programy\Notepad++\notepad++.exe'
 
-action2:
-  type: "sleep"
-  value: 1
+# action2:
+#   type: "sleep"
+#   value: 1
 
-action3:
-  type: "keystroke"
-  flow: ""
-  sequence:
-    - win
-    - win
+# action3:
+#   type: "keystroke"
+#   flow: ""
+#   sequence:
+#     - ["ctrl", "A"]
 
 action4:
   type: "app"
-  name: "Chrome"
-  path: 'C:\\"Program Files"\\Google\\Chrome\\Application\\chrome.exe "http://192.168.1.18:8829/login"'
-  authorization:
-    user: "pezet"
-    pass: "MedialkiWirtualki123"
-    mode: "form"
+  name: "Chrome - PZMedia"
+  path: 'C:\"Program Files"\Google\Chrome\Application\chrome.exe "http://192.168.1.18:8829"'
 
 action5:
   type: "sleep"
-  value: 1
+  value: 5
 
 action6:
   type: "keystroke"
-  flow: ""
   sequence:
     - "Dupa biskupa"
