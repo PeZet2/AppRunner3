@@ -1,6 +1,6 @@
 import yaml
 import argparse
-from actions import ActionBuilder
+from lib.actions import ActionBuilder
 
 
 class AppRunner():

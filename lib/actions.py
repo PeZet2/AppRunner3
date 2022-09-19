@@ -3,7 +3,7 @@ from msilib import sequence
 import os
 import time
 from pynput.keyboard import Controller
-from signs import sign_dict
+from lib.signs import sign_dict
 
 
 class ActionBuilder():
@@ -64,7 +64,6 @@ class KeystrokeAction(Action):
             self.write_element(element)
 
     def press_in_parallel(self, series: list):
-        print(series[0])
         if len(series) > 1:
             with self.keyboard.pressed(sign_dict.get(series[0])):
                 self.press_in_parallel(series[1:])
