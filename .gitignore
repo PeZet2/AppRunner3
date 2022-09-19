@@ -1,3 +1,6 @@
+dist/*
+build/*
 .idea*
 *.iml
 __pycache__*
+app_runner.spec

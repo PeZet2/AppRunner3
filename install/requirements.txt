@@ -2,3 +2,4 @@ argparse
 pyyaml~=6.0
 selenium~=3.141.0
 pynput~=1.7.5
+pyinstall==0.1.4
