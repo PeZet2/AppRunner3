@@ -1,3 +1,7 @@
+####################
+# EXAMPLE TEMPLATE #
+####################
+
 action1:
   type: "app"
   name: "Notepad++"

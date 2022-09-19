@@ -1,5 +1,4 @@
 import yaml
-import argparse
 from lib.actions import ActionBuilder
 
 
@@ -23,15 +22,6 @@ class AppRunner():
             action.run_action()
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description='Parameters for app_runner.')
-    parser.add_argument('--config_file',
-                        required=True,
-                        help='Configuration file')
-    return parser.parse_args()
-
-
 if __name__ == "__main__":
-    args = parse_args()
-    apprunner = AppRunner(args.config_file)
+    apprunner = AppRunner('config.yml')
     apprunner.run()
